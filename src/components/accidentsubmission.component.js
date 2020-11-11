@@ -9,9 +9,7 @@ export default class AccidentSubmission extends Component {
 
 
     this.onChangeAccidentDate = this.onChangeAccidentDate.bind(this);
-
-    this.onChangeHours = this.onChangeHours.bind(this);
-    this.onChangeMinutes = this.onChangeMinutes.bind(this);
+    this.onChangeAccidentTime = this.onChangeAccidentTime.bind(this);
 
     this.onChangeDriverAge = this.onChangeDriverAge.bind(this);
     this.onChangeDriverGender = this.onChangeDriverGender.bind(this);
@@ -36,9 +34,8 @@ export default class AccidentSubmission extends Component {
     const d= new Date();
 
     this.state = {
-      hours: d.getHours(),
-      minutes: d.getMinutes(),
       accidentDate:d,
+      accidentTime:d.toString().match(/(\d\d:\d\d)/)[0],
       driverAge: 0,
       driverGender: 'male',
       weather: 'clear',
@@ -70,15 +67,10 @@ export default class AccidentSubmission extends Component {
         })
       }
 
-  onChangeHours(e) {
+
+  onChangeAccidentTime(e) {
     this.setState({
-      hours: e.target.value,
-      res:''
-    })
-  }
-  onChangeMinutes(e) {
-    this.setState({
-      minutes: e.target.value,
+      accidentTime: e.target.value,
       res:''
     })
   }
@@ -157,9 +149,10 @@ export default class AccidentSubmission extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    const datetime = new Date(this.state.accidentDate.toString().replace(/(\d\d:\d\d:\d\d)/,this.state.accidentTime))
 
     const accident = {
-      datetime:this.state.accidentDate,
+      datetime:datetime,
       driverAge: this.state.driverAge,
       driverGender: this.state.driverGender,
       weather: this.state.weather,
@@ -186,8 +179,7 @@ export default class AccidentSubmission extends Component {
         this.setState({
           res: res.data.message,
           accidentDate:d,
-          hours: d.getHours(),
-          minutes: d.getMinutes(),
+          accidentTime:d.toString().match(/(\d\d:\d\d)/)[0],
           driverAge: 0,
           driverGender: 'male',
           weather: 'clear',
@@ -215,19 +207,34 @@ export default class AccidentSubmission extends Component {
 
 
       <form id="accident-report-from" onSubmit={this.onSubmit} >
-        <div className="header"><h3 style={{color:"black"}}>Accident Report </h3></div>
-        <br/>
-      <div>
+        <div className="header"><h3>Accident Report </h3></div>
+          <br/>
+        <div>
 
         <div className="form-group row">
-          <div className="col-sm-3"><label>Accident Date: </label></div>
-         <div className="col-sm-3"><div>
+          <div className="col-sm-3">
+            <label>Accident Date: </label>
+          </div>
+         <div className="col-sm-3">
+            <div>
               <DatePicker className="form-control"
               selected={this.state.accidentDate}
               onChange={this.onChangeAccidentDate}
               />
+            </div>
           </div>
           </div>
+
+          <div className="form-group row">
+            <div className="col-sm-3"><label>Accident Time: </label>
+            </div>
+            <div className="col-sm-3">
+              <input  type="time"
+              className="form-control"
+              value={this.state.accidentTime}
+              onChange={this.onChangeAccidentTime}
+              />
+            </div>
           </div>
           <div className="form-group row">
          <div className="col-sm-3"><label>Driver Age </label></div>

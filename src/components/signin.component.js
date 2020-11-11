@@ -83,7 +83,7 @@ export default class Signin extends Component {
 
     if(!token){
       return (
-        <div>
+        <div className="content">
         <h1>Road Accident Prevention System</h1>
         <br/>
         <form>
@@ -109,7 +109,7 @@ export default class Signin extends Component {
     }
 
     return (
-      <div>
+      <div className="content">
         Successfully Signed in!<br/>
         <Link to="/">Load homepage</Link>
       </div>

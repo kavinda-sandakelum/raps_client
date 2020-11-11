@@ -34,7 +34,7 @@ export default class Navbar extends Component {
 
     if(adminRights){
       return (
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
           <Link to="/" className="navbar-brand">Road Accident Prevention System</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
@@ -51,6 +51,10 @@ export default class Navbar extends Component {
               <a onClick={()=>this.props.handleNavigation("accidentsubmission")} className="nav-link">Accident Submission</a>
             </li>
 
+            <li className="navbar-item">
+              <a onClick={()=>this.props.handleNavigation("eventsubmission")} className="nav-link">Event Submission</a>
+            </li>
+
             </ul>
             <ul className="navbar-nav navbar-right">
             <button onClick={this.LogOut.bind(this,token)} className="navbar-item nav-link btn btn-secondary">Log out</button>
@@ -62,7 +66,7 @@ export default class Navbar extends Component {
     }
     else{
       return (
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
 
           <Link to="/" className="navbar-brand">Road Accident Prevention System</Link>
           <div className="collpase navbar-collapse"
@@ -70,6 +74,9 @@ export default class Navbar extends Component {
           <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
             <a onClick={()=>this.props.handleNavigation("accidentsubmission")} className="nav-link">Accident Submission</a>
+          </li>
+          <li className="navbar-item">
+            <a onClick={()=>this.props.handleNavigation("eventsubmission")} className="nav-link">Event Submission</a>
           </li>
             </ul>
 

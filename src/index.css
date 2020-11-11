@@ -6,8 +6,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+a{
+  cursor: pointer;
 }
+.content{
+  padding:2ex;
+}
+
+/*
+body{
+  background-color: #222;
+}
+h3, td, p, label, .form-group{
+  color: white;
+}
+.form-control{
+  background-color: #444;
+  color:white;
+}
+*/

@@ -50,9 +50,8 @@ export default class Home extends Component {
         }else{
           //not logged in
           if(!this.state.data.username){
-
             return(
-              <div>
+              <div className="content">
               <h1>Road Accident Prediction System</h1>
               Sign in to continue<br/>
               <Link to="/signin">Sign in</Link>
@@ -67,7 +66,9 @@ export default class Home extends Component {
                 navState={this.state.nav}
                 handleNavigation={this.handleNavigation}
               />
+              <div className="content">
                   <Content nav={this.state.nav} token={this.state.token}/>
+              </div>
               </div>
           )
         }
