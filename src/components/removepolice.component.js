@@ -6,7 +6,7 @@ const Police = props => (
     <td>{props.police.username}</td>
     <td>{props.police.adminRights?'Admin':'User'}</td>
     <td>
-      <a href="#" onClick={() => { props.deletePolice(props.police.username) }}>remove</a>
+      <button className="btn btn-sm btn-danger" onClick={() => { props.deletePolice(props.police.username) }}>remove</button>
     </td>
   </tr>
 )
