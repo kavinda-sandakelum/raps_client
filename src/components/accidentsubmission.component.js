@@ -165,8 +165,8 @@ export default class AccidentSubmission extends Component {
       kmPost: this.state.kmPost,
       suburb: this.state.suburb,
       operatedSpeed: this.state.operatedSpeed,
-
-      sessionToken: this.state.token,
+      status:'reported',
+      sessionToken: this.state.token
     }
 
     console.log(accident);
@@ -268,7 +268,7 @@ export default class AccidentSubmission extends Component {
           <div className="col-sm-3"><label>Vehicle Type </label></div>
           <div className="col-sm-3"><select className="form-control" onChange={this.onChangeVehicleType}>
               <option value="car">Car</option>
-              <option value="van">Van</option>
+              <option value="dualPurpose">Dual Purpose</option>
               <option value="hv">HV</option>
               </select>
           </div>
@@ -307,7 +307,7 @@ export default class AccidentSubmission extends Component {
           </div>
           <div className="form-group row">
           <div className="col-sm-3"><label>Reason </label></div>
-          <div className="col-sm-3"><select className="form-control" onChange={this.onChangeSeverity}>
+          <div className="col-sm-3"><select className="form-control" onChange={this.onChangeReason}>
               <option value="speed">Speeding</option>
               <option value="sleep">Sleep</option>
               <option value="slipping">Slipping</option>

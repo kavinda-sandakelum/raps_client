@@ -60,7 +60,7 @@ export default class Home extends Component {
                   width="30"
                   height="30"
                   className="d-inline-block align-top"
-                />{" "}
+                />&nbsp;
                 Road Accident Prediction System
               </span>
             </nav>
@@ -69,7 +69,7 @@ export default class Home extends Component {
                 <h5 className="card-title">Sign in to continue</h5>
 
                 <br />
-                <button className="btn btn-warning">
+                <button className="btn">
                   <Link to="/signin">Sign in</Link>
                 </button>
               </div>
