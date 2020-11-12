@@ -46,7 +46,7 @@ export default class AccidentSubmission extends Component {
       severity: 'propertydamage',
       reason: 'speed',
       kmPost: 0,
-      suburb: '',
+      suburb: 'kottawa',
       operatedSpeed: 0,
 
       token:this.props.token,
@@ -138,6 +138,41 @@ export default class AccidentSubmission extends Component {
       suburb: e.target.value,
       res:''
     })
+    switch(e.target.value){
+      case 'kottawa':
+      this.setState({kmPost:0})
+      break;
+      case 'kahathuduwa':
+      this.setState({kmPost:5.9})
+      break;
+      case 'gelanigama':
+      this.setState({kmPost:13.7})
+      break;
+      case 'dodangoda':
+      this.setState({kmPost:34.8})
+      break;
+      case 'welipanna':
+      this.setState({kmPost:46})
+      break;
+      case 'kurundugahahetekma':
+      this.setState({kmPost:67.6})
+      break;
+      case 'baddegama':
+      this.setState({kmPost:79.8})
+      break;
+      case 'pinnaduwa':
+      this.setState({kmPost:95.3})
+      break;
+      case 'imaduwa':
+      this.setState({kmPost:108})
+      break;
+      case 'kokmaduwa':
+      this.setState({kmPost:116.5})
+      break;
+      case 'godagama':
+      this.setState({kmPost:127})
+      break;
+    }
   }
   onChangeOperatedSpeed(e) {
     this.setState({
@@ -165,8 +200,7 @@ export default class AccidentSubmission extends Component {
       kmPost: this.state.kmPost,
       suburb: this.state.suburb,
       operatedSpeed: this.state.operatedSpeed,
-
-      sessionToken: this.state.token,
+      sessionToken: this.state.token
     }
 
     console.log(accident);
@@ -193,7 +227,7 @@ export default class AccidentSubmission extends Component {
           severity: 'propertydamage',
           reason:'speed',
           kmPost: 0,
-          suburb: '',
+          suburb: 'kottawa',
           operatedSpeed: 0
         })
       })
@@ -268,7 +302,7 @@ export default class AccidentSubmission extends Component {
           <div className="col-sm-3"><label>Vehicle Type </label></div>
           <div className="col-sm-3"><select className="form-control" onChange={this.onChangeVehicleType}>
               <option value="car">Car</option>
-              <option value="van">Van</option>
+              <option value="dualPurpose">Dual Purpose</option>
               <option value="hv">HV</option>
               </select>
           </div>
@@ -307,7 +341,7 @@ export default class AccidentSubmission extends Component {
           </div>
           <div className="form-group row">
           <div className="col-sm-3"><label>Reason </label></div>
-          <div className="col-sm-3"><select className="form-control" onChange={this.onChangeSeverity}>
+          <div className="col-sm-3"><select className="form-control" onChange={this.onChangeReason}>
               <option value="speed">Speeding</option>
               <option value="sleep">Sleep</option>
               <option value="slipping">Slipping</option>
@@ -319,22 +353,34 @@ export default class AccidentSubmission extends Component {
               </select></div>
           </div>
           <div className="form-group row">
+          <div className="col-sm-3"><label>Suburb </label></div>
+          <div className="col-sm-3">
+          <select className="form-control" onChange={this.onChangeSuburb}>
+              <option value="kottawa">Kottawa</option>
+              <option value="kahathuduwa">Kahathuduwa</option>
+              <option value="gelanigama">Gelanigama</option>
+              <option value="dodangoda">Dodangoda</option>
+              <option value="welipanna">Welipanna</option>
+              <option value="kurundugahahetekma">Kurundugahahetekma</option>
+              <option value="baddegama">Baddegama</option>
+              <option value="pinnaduwa">Pinnaduwa</option>
+              <option value="imaduwa">Imaduwa</option>
+              <option value="kokmaduwa">Kokmaduwa</option>
+              <option value="godagama">Godagama</option>
+              </select></div>
+          </div>
+
+          <div className="form-group row">
           <div className="col-sm-3"><label>KM Post </label></div>
-          <div className="col-sm-3"><input  type="number"
+          <div className="col-sm-3"><input  type="number" step='0.1'
               className="form-control"
               value={this.state.kmPost}
               onChange={this.onChangeKmPost}
               min='0'
+              max='127'
               /></div>
           </div>
-          <div className="form-group row">
-          <div className="col-sm-3"><label>Suburb </label></div>
-          <div className="col-sm-3"><input  type="text"
-              className="form-control"
-              value={this.state.suburb}
-              onChange={this.onChangeSuburb}
-              /></div>
-          </div>
+
           <div className="form-group row">
           <div className="col-sm-3"><label>Operated Speed (km/h) </label></div>
           <div className="col-sm-3"><input  type="number"

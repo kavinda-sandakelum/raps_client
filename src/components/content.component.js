@@ -3,7 +3,9 @@ import React from 'react';
 import AddPolice from './addpolice.component.js';
 import RemovePolice from './removepolice.component.js';
 import AccidentSubmission from './accidentsubmission.component.js';
+import AccidentList from './accidentlist.component.js';
 import EventSubmission from './eventsubmission.component.js';
+import EventList from './eventlist.component.js';
 
 export default class Content extends React.Component {
 
@@ -21,9 +23,17 @@ export default class Content extends React.Component {
       return (
         <AccidentSubmission token={this.props.token}/>
       )
+      case "accidentlist":
+      return (
+        <AccidentList token={this.props.token}/>
+      )
       case "eventsubmission":
       return (
         <EventSubmission token={this.props.token}/>
+      )
+      case "eventlist":
+      return (
+        <EventList token={this.props.token}/>
       )
       default:
       return(

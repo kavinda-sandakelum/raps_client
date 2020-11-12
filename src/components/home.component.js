@@ -66,19 +66,21 @@ export default class Home extends Component {
                   width="30"
                   height="30"
                   className="d-inline-block align-top"
-                />{" "}
+                />&nbsp;
                 Road Accident Prediction System
               </span>
             </nav>
+
 
             <div className="jumbotron jumbotron-fluid">
               <div className="container">
                 <h1 className="display-4">Sign in to continue</h1>
                 <p class="lead">
-                  <a class="btn btn-warning btn-lg" href="#" role="button">
+                  <a class="btn btn-warning btn-lg" href="" role="button">
                     <Link to="/signin">Sign in</Link>
                   </a>
                 </p>
+
               </div>
             </div>
           </div>
