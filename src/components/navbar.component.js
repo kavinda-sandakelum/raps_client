@@ -65,6 +65,10 @@ export default class Navbar extends Component {
               <a onClick={()=>this.props.handleNavigation("eventsubmission")} className="nav-link">Event Submission</a>
             </li>
 
+            <li className="navbar-item">
+              <a onClick={()=>this.props.handleNavigation("eventlist")} className="nav-link">Event List</a>
+            </li>
+
             </ul>
             <ul className="navbar-nav navbar-right">
             <button onClick={this.LogOut.bind(this,token)} className="navbar-item nav-link btn btn-secondary">Log out</button>
