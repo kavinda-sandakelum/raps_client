@@ -58,7 +58,7 @@ export default class Navbar extends Component {
             </li>
 
             <li className="navbar-item">
-              <a onClick={()=>this.props.handleNavigation("deleteaccident")} className="nav-link">Delete Accident</a>
+              <a onClick={()=>this.props.handleNavigation("accidentlist")} className="nav-link">Accident List</a>
             </li>
 
             <li className="navbar-item">

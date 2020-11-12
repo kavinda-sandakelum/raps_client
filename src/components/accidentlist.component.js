@@ -26,6 +26,7 @@ const Accident = props => (
     <td>{props.accident.kmPost}</td>
     <td>{props.accident.suburb}</td>
     <td>{props.accident.operatedSpeed}</td>
+    <td>{props.accident.status}</td>
     <td>
       <button className="btn btn-sm btn-danger" onClick={() => { props.deleteAccident(props.accident.id) }}>Delete</button>
     </td>
@@ -88,6 +89,7 @@ export default class AccidentList extends Component {
               <th>KM Post</th>
               <th>Suburb</th>
               <th>Operated Speed</th>
+              <th>Status</th>
               <th></th>
             </tr>
           </thead>
