@@ -31,7 +31,7 @@ export default class EventSubmission extends Component {
       drivingSide: 'colombo',
       severity: 'minor',
       kmPost: 0,
-      suburb: '',
+      suburb: 'kottawa',
       token:this.props.token,
       res:''
     }
@@ -156,7 +156,7 @@ export default class EventSubmission extends Component {
           drivingSide: 'colombo',
           severity: 'minor',
           kmPost: 0,
-          suburb: ''
+          suburb: 'kottawa'
         })
       })
 

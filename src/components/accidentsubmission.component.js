@@ -46,7 +46,7 @@ export default class AccidentSubmission extends Component {
       severity: 'propertydamage',
       reason: 'speed',
       kmPost: 0,
-      suburb: '',
+      suburb: 'kottawa',
       operatedSpeed: 0,
 
       token:this.props.token,
@@ -227,7 +227,7 @@ export default class AccidentSubmission extends Component {
           severity: 'propertydamage',
           reason:'speed',
           kmPost: 0,
-          suburb: '',
+          suburb: 'kottawa',
           operatedSpeed: 0
         })
       })
