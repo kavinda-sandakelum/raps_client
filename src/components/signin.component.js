@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import logo from "../icon.png";
 
@@ -161,6 +161,7 @@ export default class Signin extends Component {
 
   onSignin() {
     //post request sigin in
+
     axios
       .post("http://localhost:5000/police/signin", {
         username: this.state.signInUsername,
@@ -175,6 +176,7 @@ export default class Signin extends Component {
             adminRights: json.adminRights,
           });
           setInStorage("road_accident_prevention_system_webtoken", json.token);
+          this.props.history.push("/");
         } else {
           this.setState({
             signInError: json.message,
