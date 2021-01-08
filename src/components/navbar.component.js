@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import axios from 'axios';
 import logo from "../icon.png";
 
@@ -20,6 +21,7 @@ export default class Navbar extends Component {
             console.log(data);
 
             //refresh page
+
             if (window.location.href.substr(-2) !== '?r') {
                 window.location = window.location.href + '?r';
             }
@@ -51,6 +53,14 @@ export default class Navbar extends Component {
 
             <li className="navbar-item" style={{display: adminRights ? 'block' : 'none' }}>
               <a onClick={()=>this.props.handleNavigation("removepolice")} className="nav-link">Remove User</a>
+            </li>
+
+            <li className="navbar-item" style={{display: adminRights ? 'block' : 'none' }}>
+              <a onClick={()=>this.props.handleNavigation("addeteam")} className="nav-link">Add Emergency Team</a>
+            </li>
+
+            <li className="navbar-item" style={{display: adminRights ? 'block' : 'none' }}>
+              <a onClick={()=>this.props.handleNavigation("removeeteam")} className="nav-link">Remove Emergency Team</a>
             </li>
 
             <li className="navbar-item">
