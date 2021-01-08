@@ -47,7 +47,13 @@ export default class Home extends Component {
 
   render() {
     if (this.state.loading) {
-      return <div>loading...</div>;
+      return (
+        <div className="d-flex justify-content-center ">
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      );
     } else {
       //not logged in
       if (!this.state.data.username) {
@@ -64,14 +70,17 @@ export default class Home extends Component {
                 Road Accident Prediction System
               </span>
             </nav>
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Sign in to continue</h5>
 
-                <br />
-                <button className="btn">
-                  <Link to="/signin">Sign in</Link>
-                </button>
+
+            <div className="jumbotron jumbotron-fluid">
+              <div className="container">
+                <h1 className="display-4">Sign in to continue</h1>
+                <p class="lead">
+                  <a class="btn btn-warning btn-lg" href="" role="button">
+                    <Link to="/signin">Sign in</Link>
+                  </a>
+                </p>
+
               </div>
             </div>
           </div>
