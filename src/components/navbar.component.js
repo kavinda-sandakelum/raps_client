@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import axios from 'axios';
 import logo from "../icon.png";
 
 export default class Navbar extends Component {
@@ -14,19 +15,22 @@ export default class Navbar extends Component {
     console.log("logged out");
     //window.location.reload(true);
 
-    axios
-      .get("http://localhost:5000/police/logout/", { params: { token: t } })
-      .then((response) => response.data)
-      .then((data) => {
-        console.log(data);
+    axios.get("http://localhost:5000/police/logout/",{params:{token:t}})
+        .then(response => response.data)
+        .then(data => {
+            console.log(data);
 
-        //refresh page
-        if (window.location.href.substr(-2) !== "?r") {
-          window.location = window.location.href + "?r";
-        }
-      });
+            //refresh page
+
+            if (window.location.href.substr(-2) !== '?r') {
+                window.location = window.location.href + '?r';
+            }
+
+            })
+
   }
 
+  
   render() {
     const adminRights = this.props.adminRights;
     const token = this.props.token;
@@ -66,6 +70,14 @@ export default class Navbar extends Component {
               >
                 Remove User
               </a>
+            </li>
+
+            <li className="navbar-item" style={{display: adminRights ? 'block' : 'none' }}>
+              <a onClick={()=>this.props.handleNavigation("addeteam")} className="nav-link">Add Emergency Team</a>
+            </li>
+
+            <li className="navbar-item" style={{display: adminRights ? 'block' : 'none' }}>
+              <a onClick={()=>this.props.handleNavigation("removeeteam")} className="nav-link">Remove Emergency Team</a>
             </li>
 
             <li className="navbar-item">

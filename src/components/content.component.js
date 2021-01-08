@@ -2,6 +2,8 @@ import React from 'react';
 
 import AddPolice from './addpolice.component.js';
 import RemovePolice from './removepolice.component.js';
+import AddETeam from './addeteam.component.js';
+import RemoveETeam from './removeeteam.component.js';
 import AccidentSubmission from './accidentsubmission.component.js';
 import AccidentList from './accidentlist.component.js';
 import EventSubmission from './eventsubmission.component.js';
@@ -18,6 +20,14 @@ export default class Content extends React.Component {
       case "removepolice":
       return (
         <RemovePolice token={this.props.token}/>
+      )
+      case "addeteam":
+      return (
+        <AddETeam token={this.props.token}/>
+      )
+      case "removeeteam":
+      return (
+        <RemoveETeam token={this.props.token}/>
       )
       case "accidentsubmission":
       return (
