@@ -8,8 +8,7 @@ const Incident = (props) => (
       <br />
       {props.incident.datetime.match(/\d\d:\d\d/)}
     </td>
-    <td>{props.incident.reporterName}</td>
-    <td>{props.incident.incidentType}</td>
+    <td>{props.incident.isAccident?"Accident":"Event"}</td>
     <td>{props.incident.weather}</td>
     <td>{props.incident.vehicleType}</td>
     <td>{props.incident.drivingSide}</td>
@@ -17,13 +16,11 @@ const Incident = (props) => (
     <td>{props.incident.kmPost}</td>
     <td>{props.incident.suburb}</td>
     <td>{props.incident.operatedSpeed}</td>
-    <td>{props.incident.incidentDescription}</td>
-    <td>{props.incident.sessionToken}</td>
     <td>
       <button
         className="btn btn-sm btn-danger"
         onClick={() => {
-          props.deleteEvent(props.event.id);
+          props.deleteIncident(props.incident.id);
         }}
       >
         Delete
@@ -88,7 +85,6 @@ export default class ValidateIncident extends Component {
           <thead className="thead-light">
             <tr>
               <th>Date/Time</th>
-              <th>reporterName</th>
               <th>incidentType</th>
               <th>weather</th>
               <th>vehicleType</th>
@@ -97,7 +93,7 @@ export default class ValidateIncident extends Component {
               <th>kmPost</th>
               <th>Suburb</th>
               <th>operatedSpeed</th>
-              <th>incidentDescription</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>{this.incidentlist()}</tbody>
