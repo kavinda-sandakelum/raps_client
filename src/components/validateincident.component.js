@@ -8,7 +8,7 @@ const Incident = (props) => (
       <br />
       {props.incident.datetime.match(/\d\d:\d\d/)}
     </td>
-    <td>{props.incident.isAccident?"Accident":"Event"}</td>
+    <td>{props.incident.isAccident?"Accident" : "Event"}</td>
     <td>{props.incident.weather}</td>
     <td>{props.incident.vehicleType}</td>
     <td>{props.incident.drivingSide}</td>
