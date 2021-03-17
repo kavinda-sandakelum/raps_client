@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { getLocalDate, getLocalTime } from "../utils/datetime";
+
 const Incident = (props) => (
   <tr>
     <td>
-      {props.incident.datetime.match(/\d+-\d+-\d+/)}
-      <br />
-      {props.incident.datetime.match(/\d\d:\d\d/)}
+    {getLocalDate(props.incident.datetime)}
+    <br/>
+    {getLocalTime(props.incident.datetime)}
     </td>
     <td>{props.incident.isAccident?"Accident":"Event"}</td>
     <td>{props.incident.weather}</td>
