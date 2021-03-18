@@ -59,7 +59,7 @@ export default class Navbar2 extends Component {
                 </a>
               </Dropdown.Item>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("removepolice")} className="dropdown-item">
+                <a onClick={() => this.props.handleNavigation("policelist")} className="dropdown-item">
                   <FontAwesomeIcon icon={faListAlt} />&nbsp;
                   User List
                 </a>
@@ -136,7 +136,6 @@ export default class Navbar2 extends Component {
                 Incidents
               </a>
             </div>
-
 
           </Nav>
           <Nav className="ml-auto">
