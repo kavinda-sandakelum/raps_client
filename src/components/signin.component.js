@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import logo from "../icons/icon.png";
+import "./css/signin.component.css";
+import { Container, Row, Col } from "react-bootstrap";
+import SVGsign from "../Assets/signin1.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 import { getFromStorage, setInStorage } from "../utils/storage";
 
@@ -78,50 +82,79 @@ export default class Signin extends Component {
     if (!token) {
       return (
         <div className="content">
-          <nav className="navbar navbar-dark bg-dark">
-            <span className="navbar-brand mb-0 h1">
-              <img
-                src={logo}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />{" "}
-              Road Accident Prediction System
-            </span>
-          </nav>
-          <br />
+          <div className="background">
+            <div className="form-button">
+              <Container>
+                <Row>
+                  <Col>
+                    <Row>
+                      <h3>Road Accident Prevention System</h3>
+                    </Row>
+                    <img className="sign-img" src={SVGsign} />
+                  </Col>
+                  <Col>
+                    <div className="form-one">
+                      <form className=" col-12   p-5 ">
+                        <h3>Welcome Back!</h3>
+                        <h6>Login to continue</h6>
 
-          <form className="col-sm-4 col-12 text-center border border-secondary p-5 ">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control mb-4"
-                value={signInUsername}
-                onChange={this.onTextboxChangeUsername}
-                placeholder="Username"
-              ></input>
+                        <div className="form-group">
+                          <tr>
+                            <td>
+                              <FontAwesomeIcon
+                                className="icons"
+                                icon={faUser}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                className="forminput"
+                                value={signInUsername}
+                                onChange={this.onTextboxChangeUsername}
+                                placeholder="Username"
+                              ></input>
+                            </td>
+                          </tr>
+                        </div>
+
+                        <div className="form-group">
+                          <tr>
+                            <td>
+                              <FontAwesomeIcon
+                                className="icons"
+                                icon={faLock}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="password"
+                                className="forminput"
+                                value={signInPassword}
+                                onChange={this.onTextboxChangePassword}
+                                placeholder="Password"
+                              />
+                            </td>
+                          </tr>
+                        </div>
+                        <div className="signInError">
+                          <p className="text-danger">{signInError}</p>
+                        </div>
+                      </form>
+                      <button
+                        className="btn btn-warning
+            btn-rounded btn-block my-4 waves-effect z-depth-0 col-sm-4 col-12 m-5 "
+                        disabled={!activateSubmit}
+                        onClick={this.onSignin}
+                      >
+                        Sign in
+                      </button>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
             </div>
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control mb-4"
-                value={signInPassword}
-                onChange={this.onTextboxChangePassword}
-                placeholder="Password"
-              ></input>
-            </div>
-            <div className="signInError">
-              <p className="text-danger">{signInError}</p>
-            </div>
-          </form>
-          <button
-            className="btn btn-warning
-            btn-rounded btn-block my-4 waves-effect z-depth-0 col-sm-4 col-12"
-            disabled={!activateSubmit}
-            onClick={this.onSignin}
-          >
-            Sign in
-          </button>
+          </div>
         </div>
       );
     }
