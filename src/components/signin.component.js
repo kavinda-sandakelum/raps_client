@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import logo from "../icon.png";
+import logo from "../icons/icon.png";
 
 import { getFromStorage, setInStorage } from "../utils/storage";
 

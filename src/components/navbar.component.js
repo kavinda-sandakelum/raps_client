@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import axios from "axios";
-import logo from "../icon.png";
+import logo from "../icons/icon.png";
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Dropdown, NavLink, Button } from 'react-bootstrap';
 
-export default class Navbar extends Component {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUser, faUserPlus, faPlus, faAmbulance, faCarCrash, faListAlt, faExclamationTriangle, faEnvelopeOpenText, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+
+export default class Navbar2 extends Component {
   constructor(props) {
     super(props);
 
@@ -34,122 +38,120 @@ export default class Navbar extends Component {
     const token = this.props.token;
 
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">
-          <img
-            src={logo}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
+      <Navbar bg="dark" variant="dark" expand="lg" className="d-flex">
+        <Navbar.Brand>
+          <img src={logo} width="30" height="30" className="d-inline-block align-top"/>
           &nbsp; Road Accident Prevention System
-        </Link>
-        <div className="collpase navbar-collapse">
-          <ul className="navbar-nav mr-auto">
-            <li
-              className="navbar-item"
-              style={{ display: adminRights ? "block" : "none" }}
-            >
-              <a
-                onClick={() => this.props.handleNavigation("addpolice")}
-                className="nav-link"
-              >
-                Add User
-              </a>
-            </li>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="d-flex justify-content-center" fill variant="pills">
+          <Dropdown as={NavItem} style={{ display: adminRights ? "block" : "none" }}>
+            <Dropdown.Toggle as={NavLink}>
+            <FontAwesomeIcon icon={faUser} />&nbsp;
+              Police
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("addpolice")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faUserPlus} />&nbsp;
+                  Add User
+                </a>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("removepolice")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faListAlt} />&nbsp;
+                  User List
+                </a>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-            <li
-              className="navbar-item"
-              style={{ display: adminRights ? "block" : "none" }}
-            >
-              <a
-                onClick={() => this.props.handleNavigation("removepolice")}
-                className="nav-link"
-              >
-                Remove User
-              </a>
-            </li>
+          <Dropdown as={NavItem} style={{ display: adminRights ? "block" : "none" }}>
+            <Dropdown.Toggle as={NavLink}>
+            <FontAwesomeIcon icon={faAmbulance} />&nbsp;
+              Emergency Teams
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("addeteam")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faUserPlus} />&nbsp;
+                  Add Emergency Team
+                </a>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("removeeteam")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faListAlt} />&nbsp;
+                  Emergency Team List
+                </a>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-            <li
-              className="navbar-item"
-              style={{ display: adminRights ? "block" : "none" }}
-            >
-              <a
-                onClick={() => this.props.handleNavigation("addeteam")}
-                className="nav-link"
-              >
-                Add Emergency Team
-              </a>
-            </li>
+          <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink}>
+            <FontAwesomeIcon icon={faCarCrash} />&nbsp;
+              Accidents
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("accidentsubmission")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faPlus} />&nbsp;
+                  Accident Submission
+                </a>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("accidentlist")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faListAlt} />&nbsp;
+                  Accident List
+                </a>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-            <li
-              className="navbar-item"
-              style={{ display: adminRights ? "block" : "none" }}
-            >
-              <a
-                onClick={() => this.props.handleNavigation("removeeteam")}
-                className="nav-link"
-              >
-                Remove Emergency Team
-              </a>
-            </li>
+          <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink}>
+            <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
+              Events
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("eventsubmission")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faPlus} />&nbsp;
+                  Event Submission
+                </a>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <a onClick={() => this.props.handleNavigation("eventlist")} className="dropdown-item">
+                  <FontAwesomeIcon icon={faListAlt} />&nbsp;
+                  Event List
+                </a>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-            <li className="navbar-item">
-              <a
-                onClick={() =>
-                  this.props.handleNavigation("accidentsubmission")
-                }
-                className="nav-link"
-              >
-                Accident Submission
+            <div as={NavItem} className="my-auto">
+              <a onClick={() => this.props.handleNavigation("incidentlist")} className="nav-link">
+                <FontAwesomeIcon icon={faEnvelopeOpenText} />&nbsp;
+                Incidents
               </a>
-            </li>
+            </div>
 
-            <li className="navbar-item">
-              <a
-                onClick={() => this.props.handleNavigation("accidentlist")}
-                className="nav-link"
-              >
-                Accident List
-              </a>
-            </li>
 
-            <li className="navbar-item">
-              <a
-                onClick={() => this.props.handleNavigation("eventsubmission")}
-                className="nav-link"
-              >
-                Event Submission
-              </a>
-            </li>
+          </Nav>
+          <Nav className="ml-auto">
+            <div as={NavItem}>
+                <a
+                  onClick={this.LogOut.bind(this, token)}
+                  className="btn btn-outline-danger text-secondary"
+                >
+                <FontAwesomeIcon icon={faSignOutAlt} /> Log out
+                </a>
+            </div>
+          </Nav>
 
-            <li className="navbar-item">
-              <a
-                onClick={() => this.props.handleNavigation("eventlist")}
-                className="nav-link"
-              >
-                Event List
-              </a>
-            </li>
-            <li className="navbar-item">
-              <a
-                onClick={() => this.props.handleNavigation("incidentlist")}
-                className="nav-link"
-              >
-                Incident List
-              </a>
-            </li>
-          </ul>
-          <ul className="navbar-nav navbar-right">
-            <button
-              onClick={this.LogOut.bind(this, token)}
-              className="navbar-item nav-link btn btn-secondary"
-            >
-              Log out
-            </button>
-          </ul>
-        </div>
-      </nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
