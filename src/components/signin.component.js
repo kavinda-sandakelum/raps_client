@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import logo from "../icon.png";
+import logo from "../icons/icon.png";
 
 import { getFromStorage, setInStorage } from "../utils/storage";
 
@@ -90,6 +90,7 @@ export default class Signin extends Component {
             </span>
           </nav>
           <br />
+
           <form className="col-sm-4 col-12 text-center border border-secondary p-5 ">
             <div className="form-group">
               <input

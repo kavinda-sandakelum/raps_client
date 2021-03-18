@@ -1,54 +1,38 @@
-import React from 'react';
+import React from "react";
 
-import AddPolice from './addpolice.component.js';
-import RemovePolice from './removepolice.component.js';
-import AddETeam from './addeteam.component.js';
-import RemoveETeam from './removeeteam.component.js';
-import AccidentSubmission from './accidentsubmission.component.js';
-import AccidentList from './accidentlist.component.js';
-import EventSubmission from './eventsubmission.component.js';
-import EventList from './eventlist.component.js';
+import AddPolice from "./addpolice.component.js";
+import RemovePolice from "./removepolice.component.js";
+import AddETeam from "./addeteam.component.js";
+import RemoveETeam from "./removeeteam.component.js";
+import AccidentSubmission from "./accidentsubmission.component.js";
+import AccidentList from "./accidentlist.component.js";
+import EventSubmission from "./eventsubmission.component.js";
+import EventList from "./eventlist.component.js";
+import ValidateIncident from "./validateincident.component.js";
 
 export default class Content extends React.Component {
-
-  render(){
+  render() {
     switch (this.props.nav) {
       case "addpolice":
-      return (
-        <AddPolice token={this.props.token}/>
-      )
+        return <AddPolice token={this.props.token} />;
       case "removepolice":
-      return (
-        <RemovePolice token={this.props.token}/>
-      )
+        return <RemovePolice token={this.props.token} />;
       case "addeteam":
-      return (
-        <AddETeam token={this.props.token}/>
-      )
+        return <AddETeam token={this.props.token} />;
       case "removeeteam":
-      return (
-        <RemoveETeam token={this.props.token}/>
-      )
+        return <RemoveETeam token={this.props.token} />;
       case "accidentsubmission":
-      return (
-        <AccidentSubmission token={this.props.token}/>
-      )
+        return <AccidentSubmission token={this.props.token} />;
       case "accidentlist":
-      return (
-        <AccidentList token={this.props.token}/>
-      )
+        return <AccidentList token={this.props.token} />;
       case "eventsubmission":
-      return (
-        <EventSubmission token={this.props.token}/>
-      )
+        return <EventSubmission token={this.props.token} />;
       case "eventlist":
-      return (
-        <EventList token={this.props.token}/>
-      )
+        return <EventList token={this.props.token} />;
+      case "incidentlist":
+        return <ValidateIncident token={this.props.token} />;
       default:
-      return(
-      <h1>{this.props.nav}</h1>
-      )
+        return <h1>{this.props.nav}</h1>;
     }
   }
 }

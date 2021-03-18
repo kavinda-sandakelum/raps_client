@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import logo from "../icon.png";
+import logo from "../icons/icon.png";
 
 import Navbar from "./navbar.component";
 import Content from "./content.component";
