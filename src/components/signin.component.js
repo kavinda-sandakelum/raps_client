@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./css/signin.component.css";
 import { Container, Row, Col } from "react-bootstrap";
-import SVGsign from "../Assets/signin1.svg";
+import SVGsign from "../Assets/signin2.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
@@ -86,69 +86,78 @@ export default class Signin extends Component {
             <div className="form-button">
               <Container>
                 <Row>
-                  <Col>
+                  <Col md-12 sm-12>
                     <Row>
                       <h3>Road Accident Prevention System</h3>
                     </Row>
                     <img className="sign-img" src={SVGsign} />
                   </Col>
-                  <Col>
-                    <div className="form-one">
-                      <form className=" col-12   p-5 ">
-                        <h3>Welcome Back!</h3>
+                  <Col md-12 sm-12>
+                    <div className="formside">
+                      <div className="welcome">
+                        <h4>Welcome Back!</h4>
                         <h6>Login to continue</h6>
-
-                        <div className="form-group">
-                          <tr>
-                            <td>
-                              <FontAwesomeIcon
-                                className="icons"
-                                icon={faUser}
-                              />
-                            </td>
-                            <td>
-                              <input
-                                type="text"
-                                className="forminput"
-                                value={signInUsername}
-                                onChange={this.onTextboxChangeUsername}
-                                placeholder="Username"
-                              ></input>
-                            </td>
-                          </tr>
-                        </div>
-
-                        <div className="form-group">
-                          <tr>
-                            <td>
-                              <FontAwesomeIcon
-                                className="icons"
-                                icon={faLock}
-                              />
-                            </td>
-                            <td>
-                              <input
-                                type="password"
-                                className="forminput"
-                                value={signInPassword}
-                                onChange={this.onTextboxChangePassword}
-                                placeholder="Password"
-                              />
-                            </td>
-                          </tr>
-                        </div>
-                        <div className="signInError">
-                          <p className="text-danger">{signInError}</p>
-                        </div>
-                      </form>
-                      <button
-                        className="btn btn-warning
-            btn-rounded btn-block my-4 waves-effect z-depth-0 col-sm-4 col-12 m-5 "
-                        disabled={!activateSubmit}
-                        onClick={this.onSignin}
-                      >
-                        Sign in
-                      </button>
+                      </div>
+                      <div className="form-inside">
+                        <form>
+                          <div className="form-groupone">
+                            <tr>
+                              <td>
+                                <FontAwesomeIcon
+                                  className="icons"
+                                  icon={faUser}
+                                />
+                              </td>
+                              <td>
+                                <input
+                                  type="text"
+                                  className="forminput"
+                                  value={signInUsername}
+                                  onChange={this.onTextboxChangeUsername}
+                                  placeholder="Username"
+                                ></input>
+                              </td>
+                            </tr>
+                          </div>
+                          <div className="form-groupone">
+                            <tr>
+                              <td>
+                                <FontAwesomeIcon
+                                  className="icons"
+                                  icon={faLock}
+                                />
+                              </td>
+                              <td>
+                                <input
+                                  type="password"
+                                  className="forminput"
+                                  value={signInPassword}
+                                  onChange={this.onTextboxChangePassword}
+                                  placeholder="Password"
+                                />
+                              </td>
+                            </tr>
+                          </div>
+                          <div className="text-right">
+                            <a href="#">Forgot Password?</a>
+                          </div>
+                          <div className="signInError">
+                            <p className="text-danger">{signInError}</p>
+                          </div>
+                        </form>
+                        <button
+                          className="btn btn-warning btn-block "
+                          disabled={!activateSubmit}
+                          onClick={this.onSignin}
+                        >
+                          Sign in
+                        </button>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </div>
                     </div>
                   </Col>
                 </Row>
