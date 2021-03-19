@@ -66,6 +66,7 @@ export default class Home extends Component {
                   width="30"
                   height="30"
                   className="d-inline-block align-top"
+                  alt="RAPS logo"
                 />&nbsp;
                 Road Accident Prediction System
               </span>
@@ -76,9 +77,9 @@ export default class Home extends Component {
               <div className="container">
                 <h1 className="display-4">Sign in to continue</h1>
                 <p class="lead">
-                  <a class="btn btn-warning btn-lg" href="" role="button">
+                  <button class="btn btn-warning btn-lg">
                     <Link to="/signin">Sign in</Link>
-                  </a>
+                  </button>
                 </p>
 
               </div>

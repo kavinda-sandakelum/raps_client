@@ -1,4 +1,4 @@
-import React, { Component, useEffec, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +6,7 @@ import {faUsers, faEdit, faBan, faTrashAlt, faSave, faSyncAlt  } from '@fortawes
 
 
 const Police = props => {
-  if(props.police.username == props.edit_username){
+  if(props.police.username === props.edit_username){
     //edit mode
       return(
       <tr className="table-secondary">
@@ -88,7 +88,7 @@ export default class PoliceList extends Component {
   };
 
   async componentDidUpdate(){
-    if(this.state.updateFlag==true){
+    if(this.state.updateFlag===true){
       await this.getList();
     }
     console.log(this.state);
