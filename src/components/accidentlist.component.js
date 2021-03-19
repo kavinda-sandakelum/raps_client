@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 import { getLocalDate, getLocalTime } from "../utils/datetime";
 
-
-
-const Accident = props => (
+const Accident = (props) => (
   <tr>
     <td>
-        {getLocalDate(props.accident.datetime)}
-        <br/>
-        {getLocalTime(props.accident.datetime)}
+      {getLocalDate(props.accident.datetime)}
+      <br />
+      {getLocalTime(props.accident.datetime)}
     </td>
     <td>
-        {props.accident.driverAge},
-        <br/>
-        {props.accident.driverGender}
+      {props.accident.driverAge},
+      <br />
+      {props.accident.driverGender}
     </td>
     <td>{props.accident.weather}</td>
     <td>
-        {props.accident.vehicleType}
-        <br/>
-        [{props.accident.vehicleYOM}]
+      {props.accident.vehicleType}
+      <br />[{props.accident.vehicleYOM}]
     </td>
     <td>{getLocalDate(props.accident.licenseIssueDate)}</td>
     <td>{props.accident.drivingSide}</td>
@@ -32,47 +29,64 @@ const Accident = props => (
     <td>{props.accident.operatedSpeed}</td>
     <td>{props.accident.status}</td>
     <td>
-      <button className="btn btn-sm btn-danger" onClick={() => { props.deleteAccident(props.accident.id) }}>Delete</button>
+      <button
+        className="btn btn-sm btn-danger"
+        onClick={() => {
+          props.deleteAccident(props.accident.id);
+        }}
+      >
+        Delete
+      </button>
     </td>
   </tr>
-)
+);
 
 export default class AccidentList extends Component {
   constructor(props) {
     super(props);
 
-    this.deleteAccident = this.deleteAccident.bind(this)
+    this.deleteAccident = this.deleteAccident.bind(this);
 
-    this.state = {accidentlist: []};
+    this.state = { accidentlist: [] };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/accident/list')
-      .then(response => {
-        this.setState({ accidentlist: response.data.data })
+    axios
+      .get("http://localhost:5000/accident/list")
+      .then((response) => {
+        this.setState({ accidentlist: response.data.data });
         console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   }
 
   deleteAccident(id) {
-    axios.delete('http://localhost:5000/accident/delete/', {data:{id:id,sessionToken:this.props.token}})
-      .then(response => {
-        console.log("id:",id)
-        console.log(response.data)
+    axios
+      .delete("http://localhost:5000/accident/delete/", {
+        data: { id: id, sessionToken: this.props.token },
+      })
+      .then((response) => {
+        console.log("id:", id);
+        console.log(response.data);
       });
 
     this.setState({
-      accidentlist: this.state.accidentlist.filter(el => el.id !== id)
-    })
+      accidentlist: this.state.accidentlist.filter((el) => el.id !== id),
+    });
   }
 
   accidentList() {
-    return this.state.accidentlist.map(currentaccident => {
-      return <Accident accident={currentaccident} deleteAccident={this.deleteAccident} key={currentaccident.id}/>;
-    })
+    return this.state.accidentlist.map((currentaccident) => {
+      return (
+        <Accident
+          accident={currentaccident}
+          deleteAccident={this.deleteAccident}
+          key={currentaccident.id}
+        />
+      );
+    });
   }
 
   render() {
@@ -97,11 +111,9 @@ export default class AccidentList extends Component {
               <th></th>
             </tr>
           </thead>
-          <tbody>
-            { this.accidentList() }
-          </tbody>
+          <tbody>{this.accidentList()}</tbody>
         </table>
       </div>
-    )
+    );
   }
 }
