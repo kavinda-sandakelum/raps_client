@@ -71,10 +71,10 @@ export default class Signin extends Component {
 
     if (isLoading) {
       return (
-        <div className="d-flex justify-content-center ">
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
+        <div className="loading">
+          <svg>
+            <circle r="40" cx="150" cy="75" stroke="#999" stroke-width="10px" fill="none"/>
+          </svg>
         </div>
       );
     }
@@ -90,7 +90,7 @@ export default class Signin extends Component {
                     <Row>
                       <h3>Road Accident Prevention System</h3>
                     </Row>
-                    <img className="sign-img" src={SVGsign} />
+                    <img className="sign-img" src={SVGsign} height="300"/>
                   </Col>
                   <Col md-12 sm-12>
                     <div className="formside">
@@ -137,9 +137,6 @@ export default class Signin extends Component {
                                 />
                               </td>
                             </tr>
-                          </div>
-                          <div className="text-right">
-                            <a href="#">Forgot Password?</a>
                           </div>
                           <div className="signInError">
                             <p className="text-danger">{signInError}</p>

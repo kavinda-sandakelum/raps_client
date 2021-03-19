@@ -128,11 +128,11 @@ export default class Navbar2 extends Component {
             </Dropdown.Menu>
           </Dropdown>
 
-            <div as={NavItem} className="my-auto">
-              <button onClick={() => this.props.handleNavigation("incidentlist")} className="nav-link">
+            <div as={NavItem} className="">
+              <a onClick={() => this.props.handleNavigation("incidentlist")} className="nav-link">
                 <FontAwesomeIcon icon={faEnvelopeOpenText} />&nbsp;
                 Incidents
-              </button>
+              </a>
             </div>
 
           </Nav>

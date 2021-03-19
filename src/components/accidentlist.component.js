@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { getLocalDate, getLocalTime } from "../utils/datetime";
+import { getLocalDate, getLocalTime } from "../utils/displayformat";
 
 const Accident = (props) => (
   <tr>

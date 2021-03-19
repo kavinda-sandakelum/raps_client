@@ -4,7 +4,7 @@ import AddPolice from "./addpolice.component.js";
 import AddETeam from "./addeteam.component.js";
 import RemoveETeam from "./removeeteam.component.js";
 import AccidentSubmission from "./accidentsubmission.component.js";
-import AccidentList from "./accidentlist.component.js";
+import AccidentList from "./accidentlist_2.component.js";
 import EventSubmission from "./eventsubmission.component.js";
 import EventList from "./eventlist.component.js";
 import ValidateIncident from "./validateincident.component.js";

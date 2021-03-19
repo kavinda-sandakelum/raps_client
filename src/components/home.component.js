@@ -48,10 +48,10 @@ export default class Home extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <div className="d-flex justify-content-center ">
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
+        <div className="loading">
+          <svg>
+            <circle r="40" cx="150" cy="75" stroke="#999" stroke-width="10px" fill="none"/>
+          </svg>
         </div>
       );
     } else {
