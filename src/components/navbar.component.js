@@ -36,7 +36,7 @@ export default class Navbar2 extends Component {
     const token = this.props.token;
 
     return (
-      <Navbar bg="dark" variant="dark" expand="lg" className="d-flex">
+      <Navbar bg="dark" variant="dark" expand="lg" className="d-flex" fixed="top">
         <Navbar.Brand>
           <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="RAPS icon"/>
           &nbsp; Road Accident Prevention System

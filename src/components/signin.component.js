@@ -143,7 +143,7 @@ export default class Signin extends Component {
                           </div>
                         </form>
                         <button
-                          className="btn btn-warning btn-block "
+                          className="btn btn-warning btn-block signin"
                           disabled={!activateSubmit}
                           onClick={this.onSignin}
                         >
@@ -171,7 +171,7 @@ export default class Signin extends Component {
           <div className="container">
             <h1 className="display-4">Successfully Signed in!</h1>
             <p class="lead">
-              <a class="btn btn-warning btn-lg" href="#" role="button">
+              <a class="btn btn-warning btn-lg signin" href="#" role="button">
                 <Link to="/">Load homepage</Link>
               </a>
             </p>

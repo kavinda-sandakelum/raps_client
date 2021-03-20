@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUsers, faEdit, faBan, faTrashAlt, faSave, faSyncAlt  } from '@fortawesome/free-solid-svg-icons'
+import {faCarCrash, faEdit, faBan, faTrashAlt, faSave, faSyncAlt  } from '@fortawesome/free-solid-svg-icons'
 import { getLocalDate, getLocalTime, getSuburbName, getKmCat } from "../utils/displayformat";
+
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const Accident = props => {
@@ -12,27 +15,167 @@ const Accident = props => {
       return(
       <tr className="table-secondary">
         <td>
-        <input
-              type="datetime-local"
-              required
-              className="form-control"
-              value={props.edit_datetime}
-              onChange={(e) => this.props.onChange("edit_datetime", e)}
-            >
-            </input>
+              {getLocalDate(props.edit_accidentDate)}
+              <input type="date"
+              value={props.edit_accidentDate}
+              onChange={props.onChangeAccidentDate}/>
         </td>
         <td>
-        <input
+              <input  type="time"
+                  className="form-control"
+                  value={props.edit_accidentTime}
+                  onChange={props.onChangeAccidentTime}
+                  />
+        </td>
+        <td>
+                <input
               type="number"
-              required
               className="form-control"
               value={props.edit_driverAge}
-              onChange={(e) => this.props.onChange("edit_driverAge", e)}
-              min='17'
-              max='76'
-            >
-            </input>
+              onChange={props.onChangeDriverAge}
+              min="17"
+              max="76"
+              style={{width:60}}
+            />
         </td>
+        <td>
+            <select className="form-control"
+            onChange={props.onChangeDriverGender}>
+                <option value="male">Male</option>
+                <option selected={props.edit_driverGender} value="female">Female</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            onChange={props.onChangeWeather}>
+                <option value="clear">Clear</option>
+                <option selected={props.edit_weather} value="rainy">Rainy</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            onChange={props.onChangeRoadSurface}>
+                <option value="dry">Dry</option>
+                <option selected={props.edit_roadSurface} value="wet">Wet</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            onChange={props.onChangeVehicleType}>
+                <option selected={props.edit_vehicleType===0} value="0">Car</option>
+                <option selected={props.edit_vehicleType===1} value="1">HV</option>
+                <option selected={props.edit_vehicleType===2} value="2">DP</option>
+            </select>
+        </td>
+        <td>
+                <input
+              type="number"
+              className="form-control"
+              value={props.edit_vehicleYOM}
+              onChange={props.onChangeVehicleYOM}
+              style={{width:80}}
+            />
+        </td>
+        <td>
+              {getLocalDate(props.edit_licenseIssueDate)}
+              <input type="date"
+              value={props.edit_licenseIssueDate}
+              onChange={props.onChangeLicenseIssueDate}/>
+        </td>
+        <td>
+            <select className="form-control"
+            onChange={props.onChangeDrivingSide}>
+                <option value="colombo">Colombo</option>
+                <option selected={props.edit_drivingSide} value="matara">Matara</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            style={{width:100}}
+            onChange={props.onChangeSeverity}>
+                <option selected={props.edit_severity===0} value="0">Property</option>
+                <option selected={props.edit_severity===1} value="1">Injury</option>
+                <option selected={props.edit_severity===2} value="2">Fatality</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            style={{width:100}}
+            onChange={props.onChangeReason}>
+                <option selected={props.edit_reason===0} value="0">AnimalCrossing</option>
+                <option selected={props.edit_reason===1} value="1">VehicleIssue</option>
+                <option selected={props.edit_reason===2} value="2">Speed</option>
+                <option selected={props.edit_reason===3} value="3">Tailgaiting</option>
+                <option selected={props.edit_reason===4} value="4">Sleep</option>
+                <option selected={props.edit_reason===5} value="5">Slipping</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            style={{width:100}}
+            onChange={props.onChangeSuburb}>
+                <option selected={props.edit_suburb===0} value="0">{getSuburbName(0)}</option>
+                <option selected={props.edit_suburb===1} value="1">{getSuburbName(1)}</option>
+                <option selected={props.edit_suburb===2} value="2">{getSuburbName(2)}</option>
+                <option selected={props.edit_suburb===3} value="3">{getSuburbName(3)}</option>
+                <option selected={props.edit_suburb===4} value="4">{getSuburbName(4)}</option>
+                <option selected={props.edit_suburb===5} value="5">{getSuburbName(5)}</option>
+                <option selected={props.edit_suburb===6} value="6">{getSuburbName(6)}</option>
+                <option selected={props.edit_suburb===7} value="7">{getSuburbName(7)}</option>
+                <option selected={props.edit_suburb===8} value="8">{getSuburbName(8)}</option>
+                <option selected={props.edit_suburb===9} value="9">{getSuburbName(9)}</option>
+                <option selected={props.edit_suburb===10} value="10">{getSuburbName(10)}</option>
+            </select>
+        </td>
+        <td>
+                <input
+              type="number"
+              className="form-control"
+              value={props.edit_kmPost}
+              onChange={props.onChangeKmPost}
+              style={{width:80}}
+              min="0"
+              max="127"
+              step=".1"
+            />
+        </td>
+        <td>
+                <input
+              type="number"
+              className="form-control"
+              value={props.edit_operatedSpeed}
+              onChange={props.onChangeOperatedSpeed}
+              style={{width:80}}
+              min="0"
+            />
+        </td>
+        <td>
+            <select className="form-control"
+            onChange={props.onChangeVehicleCondition}>
+                <option value="good">Good</option>
+                <option selected={props.edit_vehicle_condition} value="bad">Bad</option>
+            </select>
+        </td>
+        <td>
+            <select className="form-control"
+            style={{width:100}}
+            onChange={props.onChangeStatus}>
+                <option selected={props.edit_status===0} value="0">Reported</option>
+                <option selected={props.edit_status===1} value="1">Dispatched</option>
+                <option selected={props.edit_status===2} value="2">Handled</option>
+            </select>
+        </td>
+
+        <td className="text-muted">{props.accident.day_cat===0?'Weekday':props.accident.day_cat===1?'Weekend':'PubHoliday'}</td>
+        <td className="text-muted">{props.accident.hour_cat===0?'Free':props.accident.hour_cat===1?'Rush':'Normal'}</td>
+        <td className="text-muted">{props.accident.month_cat?'Off-peak':'Peak'}</td>
+        <td className="text-muted">{props.accident.vision===0?'Poor':props.accident.vision===1?'Glare':props.accident.vision===2?'Normal':'Blurred'}</td>
+        <td className="text-muted">{props.accident.age_cat===0?'Young':props.accident.age_cat===1?'Mid':'Older'}</td>
+        <td className="text-muted">{getKmCat(props.accident.km_cat)}</td>
+        <td className="text-muted">{props.accident.drowsiness?'1':'0'}</td>
+        <td className="text-muted">{props.accident.enough_gap?'1':'0'}</td>
+        <td className="text-muted">{props.accident.animal_crossing_problem?'1':'0'}</td>
+
         <td>
                 <button className="btn btn-sm btn-secondary" onClick={() => { props.discardEdit() }}>
                   <FontAwesomeIcon icon={faBan} />
@@ -40,8 +183,23 @@ const Accident = props => {
                 <button className="btn btn-sm btn-success" onClick={() => {
                   props.updateAccident(
                     props.accident.id,
-                    props.edit_name,
-                    props.edit_adminRights
+                    props.edit_accidentDate,
+                    props.edit_accidentTime,
+                    props.edit_driverAge,
+                    props.edit_driverGender,
+                    props.edit_weather,
+                    props.edit_roadSurface,
+                    props.edit_vehicleType,
+                    props.edit_vehicleYOM,
+                    props.edit_licenseIssueDate,
+                    props.edit_drivingSide,
+                    props.edit_severity,
+                    props.edit_reason,
+                    props.edit_kmPost,
+                    props.edit_suburb,
+                    props.edit_operatedSpeed,
+                    props.edit_vehicle_condition,
+                    props.edit_status
                   )}}>
                   <FontAwesomeIcon icon={faSave} />
                 </button>
@@ -61,29 +219,31 @@ const Accident = props => {
         <td>{props.accident.weather?'Rain':'Clear'}</td>
         <td>{props.accident.roadSurface?'Wet':'Dry'}</td>
 
-        <td>{props.accident.vehicleType==0?'Car':props.accident.vehicleType==1?'HV':'DP'}</td>
+        <td>{props.accident.vehicleType===0?'Car':props.accident.vehicleType===1?'HV':'DP'}</td>
         <td>{props.accident.vehicleYOM}</td>
         <td>{getLocalDate(props.accident.licenseIssueDate)}</td>
 
         <td>{props.accident.drivingSide?'Matara':'Colombo'}</td>
 
-        <td>{props.accident.severity==0?'Property':props.accident.severity==1?'Injury':'Fatality'}</td>
+        <td>{props.accident.severity===0?'Property':props.accident.severity===1?'Injury':'Fatality'}</td>
 
-        <td>{props.accident.reason==0?'AnimalCrossing':props.accident.reason==1?'VehicleIssue'
-        :props.accident.reason==2?'Speed':props.accident.reason==3?'Tailgaiting':props.accident.reason==3?'Sleep':
+        <td>{props.accident.reason===0?'AnimalCrossing':props.accident.reason===1?'VehicleIssue'
+        :props.accident.reason===2?'Speed':props.accident.reason===3?'Tailgaiting':props.accident.reason===4?'Sleep':
         'Slipping'}</td>
-        <td>{props.accident.kmPost}</td>
 
         <td>{getSuburbName(props.accident.suburb)}</td>
+        <td>{props.accident.kmPost}</td>
+
+
         <td>{props.accident.operatedSpeed}</td>
         <td>{props.accident.vehicle_condition?'Bad':'Good'}</td>
-        <td>{props.accident.status==0?'Reported':props.accident.status==1?'Dispatched':'Handled'}</td>
+        <td>{props.accident.status===0?'Reported':props.accident.status===1?'Dispatched':'Handled'}</td>
 
-        <td className="text-muted">{props.accident.day_cat==0?'Weekday':props.accident.day_cat==1?'Weekend':'PubHoliday'}</td>
-        <td className="text-muted">{props.accident.hour_cat==0?'Free':props.accident.hour_cat==1?'Rush':'Normal'}</td>
+        <td className="text-muted">{props.accident.day_cat===0?'Weekday':props.accident.day_cat===1?'Weekend':'PubHoliday'}</td>
+        <td className="text-muted">{props.accident.hour_cat===0?'Free':props.accident.hour_cat===1?'Rush':'Normal'}</td>
         <td className="text-muted">{props.accident.month_cat?'Off-peak':'Peak'}</td>
-        <td className="text-muted">{props.accident.vision==0?'Poor':props.accident.vision==1?'Glare':props.accident.vision==2?'Normal':'Blurred'}</td>
-        <td className="text-muted">{props.accident.age_cat==0?'Young':props.accident.age_cat==1?'Mid':'Older'}</td>
+        <td className="text-muted">{props.accident.vision===0?'Poor':props.accident.vision===1?'Glare':props.accident.vision===2?'Normal':'Blurred'}</td>
+        <td className="text-muted">{props.accident.age_cat===0?'Young':props.accident.age_cat===1?'Mid':'Older'}</td>
         <td className="text-muted">{getKmCat(props.accident.km_cat)}</td>
         <td className="text-muted">{props.accident.drowsiness?'1':'0'}</td>
         <td className="text-muted">{props.accident.enough_gap?'1':'0'}</td>
@@ -130,6 +290,7 @@ export default class AccidentList extends Component {
         this.onChangeKmPost = this.onChangeKmPost.bind(this);
         this.onChangeSuburb = this.onChangeSuburb.bind(this);
         this.onChangeOperatedSpeed = this.onChangeOperatedSpeed.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
 
     this.state = {accidentlist: [], loading: true};
   }
@@ -188,7 +349,10 @@ export default class AccidentList extends Component {
             status,
             sessionToken
   ) {
-    const datetime = new Date(accidentDate.toString().replace(/(\d\d:\d\d:\d\d)/,accidentTime))
+    console.log("date format");
+    const datetime = new Date(accidentDate.toString().replace(/(\d\d:\d\d)/,accidentTime).slice(0,-1))
+        console.log(accidentDate.toString())
+        console.log(accidentTime)
     await axios.post('http://localhost:5000/accident/update/', {
                     id: id,
                     datetime: datetime,
@@ -236,8 +400,8 @@ export default class AccidentList extends Component {
     this.refresh();
   }
 
-  editAccident(accident) {
-    this.setState({
+  async editAccident(accident) {
+    await this.setState({
        updateFlag: true,
        edit_id:accident.id,
        edit_accidentDate: accident.datetime,
@@ -292,9 +456,9 @@ export default class AccidentList extends Component {
     })
   }
 
-  onChangeAccidentDate(date) {
+  onChangeAccidentDate(e) {
       this.setState({
-        edit_accidentDate: date
+        edit_accidentDate: e.target.value
       })
     }
 
@@ -304,18 +468,11 @@ export default class AccidentList extends Component {
       })
     }
 
-    onChangeLicenseIssueDate(date) {
+    onChangeLicenseIssueDate(e) {
         this.setState({
-          edit_licenseIssueDate: date
+          edit_licenseIssueDate: e.target.value
         })
       }
-
-
-  onChangeAccidentTime(e) {
-    this.setState({
-      edit_accidentTime: e.target.value
-    })
-  }
 
   onChangeDriverAge(e) {
     this.setState({
@@ -330,7 +487,7 @@ export default class AccidentList extends Component {
 
   onChangeWeather(e) {
     this.setState({
-      edit_eather: (e.target.value==="clear"?false:true)
+      edit_weather: (e.target.value==="clear"?false:true)
     })
   }
 
@@ -426,6 +583,13 @@ export default class AccidentList extends Component {
       res:''
     })
   }
+  onChangeStatus(e) {
+    this.setState({
+      edit_status: parseInt(e.target.value)
+    })
+  }
+
+
 
 
 
@@ -455,6 +619,7 @@ export default class AccidentList extends Component {
         onChangeKmPost=   {this.onChangeKmPost}
         onChangeSuburb=   {this.onChangeSuburb}
         onChangeOperatedSpeed=   {this.onChangeOperatedSpeed}
+        onChangeStatus=   {this.onChangeStatus}
 
 
 
@@ -484,29 +649,32 @@ export default class AccidentList extends Component {
   render() {
     return (
       <div>
-        <h3> <FontAwesomeIcon icon={faUsers}/> Accident List&nbsp;
+        <h3> <FontAwesomeIcon icon={faCarCrash}/> Accident List&nbsp;
           <button className="btn btn-sm btn-light" onClick={() => {this.refresh() }}><FontAwesomeIcon icon={faSyncAlt}/></button>
         </h3>
         <table className="table table-bordered table-hover">
           <thead className="thead-light">
             <tr>
-              <th>Accident Date</th>
+              <th >Accident Date</th>
               <th>Accident Time</th>
               <th>Driver Age</th>
               <th>Gender</th>
               <th>Weather</th>
-              <th>RoadSurface</th>
+              <th>Road Surface</th>
               <th>Vehicle Type</th>
               <th>Vehicle YOM</th>
-              <th>License Issue</th>
-              <th>DrivingSide</th>
+              <th>License Issue Date</th>
+              <th>Driving Side</th>
               <th>Severity</th>
               <th>Reason</th>
-              <th>KMPost</th>
+
               <th>Suburb</th>
-              <th>Op.Speed</th>
-              <th>Veh.Condition</th>
+              <th>KM Post</th>
+
+              <th>Operated Speed</th>
+              <th>Vehicle Condition</th>
               <th>Status</th>
+
               <th>Day_cat</th>
               <th>Hour_cat</th>
               <th>Month_cat</th>

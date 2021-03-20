@@ -112,6 +112,7 @@ export default class PoliceList extends Component {
     await axios.post('http://localhost:5000/police/update/', {username:username,name:name,adminRights:adminRights,sessionToken:this.props.token})
       .then(response => {
         console.log(response.data)
+        console.log("token:"+this.props.token)
       });
     this.setState({
        updateFlag: true,
