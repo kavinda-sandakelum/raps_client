@@ -45,6 +45,14 @@ svg circle{
   }
 }
 
+/*Holidays*/
+.add-holiday{
+  position: relative;
+}
+@media screen and (min-width: 800px) {
+  .add-holiday{position: fixed}
+}
+
 /*
 body{
   background-color: #222;

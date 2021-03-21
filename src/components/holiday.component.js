@@ -232,17 +232,17 @@ export default class HolidayList extends Component {
       <br/>
         <div className="row">
             <div className="col-xs-12 col-md-6">
-
+             <div className="add-holiday">
                 <form id="holiday-report-form" onSubmit={this.onSubmit} >
                   <div className="header"><h5>Add Public Holiday </h5></div>
                     <br/>
                   <div>
 
-                  <div className="form-group row">
-                    <div className="col-sm-3">
+                  <div className="form-group">
+                    <div className="col-sm-12">
                       <label>Holiday Date: </label>
                     </div>
-                   <div className="col-sm-3">
+                   <div className="col-sm-12">
                       <div>
                         <DatePicker className="form-control"
                         selected={this.state.holidayDate}
@@ -252,11 +252,10 @@ export default class HolidayList extends Component {
                     </div>
                     </div>
 
-
-                    <div className="form-group row">
-                    <div className="col-sm-3"><label>Name</label></div>
-                    <div className="col-sm-3"><input  type="text"
-                        className="form-control"
+                    <div className="form-group">
+                    <div className="col-sm-12"><label>Name</label></div>
+                    <div className="col-sm-12"><input  type="text"
+                        className="form-control input-sm"
                         value={this.state.name}
                         onChange={this.onChangeName}
                         /></div>
@@ -268,6 +267,7 @@ export default class HolidayList extends Component {
                       <br/>
                     <input type="submit" value="Add holiday" onSubmit={this.onSubmit} className="btn btn-primary" /> {this.state.res}
                     <div>
+                    <br/>
 
                     </div>
 
@@ -276,7 +276,7 @@ export default class HolidayList extends Component {
                 </div>
 
 
-                </form>
+                </form></div>
 
             </div>
 
