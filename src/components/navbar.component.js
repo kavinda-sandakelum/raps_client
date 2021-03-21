@@ -4,7 +4,7 @@ import logo from "../icons/icon.png";
 import { Navbar, Nav, NavItem, Dropdown, NavLink } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUser, faUserPlus, faPlus, faAmbulance, faCarCrash, faListAlt, faExclamationTriangle, faEnvelopeOpenText, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import {faUser, faUserPlus, faPlus, faAmbulance, faCarCrash, faListAlt, faExclamationTriangle, faEnvelopeOpenText,faCalendarAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default class Navbar2 extends Component {
   constructor(props) {
@@ -132,6 +132,13 @@ export default class Navbar2 extends Component {
               <a onClick={() => this.props.handleNavigation("incidentlist")} className="nav-link">
                 <FontAwesomeIcon icon={faEnvelopeOpenText} />&nbsp;
                 Incidents
+              </a>
+            </div>
+
+            <div as={NavItem} className="">
+              <a onClick={() => this.props.handleNavigation("holiday")} className="nav-link">
+                <FontAwesomeIcon icon={faCalendarAlt} />&nbsp;
+                Holidays
               </a>
             </div>
 

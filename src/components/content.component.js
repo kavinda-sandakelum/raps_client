@@ -8,6 +8,7 @@ import AccidentList from "./accidentlist_2.component.js";
 import EventSubmission from "./eventsubmission.component.js";
 import EventList from "./eventlist.component.js";
 import ValidateIncident from "./validateincident.component.js";
+import Holiday from "./holiday.component.js";
 
 import PoliceList from "./policelist.component.js";
 
@@ -32,6 +33,8 @@ export default class Content extends React.Component {
         return <ValidateIncident token={this.props.token} />;
       case "policelist":
         return <PoliceList token={this.props.token} />;
+        case "holiday":
+          return <Holiday token={this.props.token} />;
       default:
         return <h1>{this.props.nav}</h1>;
     }
