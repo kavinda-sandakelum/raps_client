@@ -72,10 +72,17 @@ export default class Signin extends Component {
 
     if (isLoading) {
       return (
-        <div className="d-flex justify-content-center ">
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
+        <div className="loading">
+          <svg>
+            <circle
+              r="40"
+              cx="150"
+              cy="75"
+              stroke="#999"
+              stroke-width="10px"
+              fill="none"
+            />
+          </svg>
         </div>
       );
     }
@@ -172,9 +179,6 @@ export default class Signin extends Component {
                               </td>
                             </tr>
                           </div>
-                          <div className="text-right">
-                            <a href="#">Forgot Password?</a>
-                          </div>
                           <div className="signInError">
                             <p className="text-danger">{signInError}</p>
                           </div>
@@ -209,7 +213,7 @@ export default class Signin extends Component {
           <div className="container">
             <h1 className="display-4">Successfully Signed in!</h1>
             <p class="lead">
-              <a class="btn btn-warning btn-lg" href="#" role="button">
+              <a class="btn btn-warning btn-lg signin" href="#" role="button">
                 <Link to="/">Load homepage</Link>
               </a>
             </p>

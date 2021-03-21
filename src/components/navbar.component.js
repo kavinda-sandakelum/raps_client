@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router";
 import axios from "axios";
 import logo from "../icons/icon.png";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Dropdown, NavLink, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Dropdown, NavLink } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUser, faUserPlus, faPlus, faAmbulance, faCarCrash, faListAlt, faExclamationTriangle, faEnvelopeOpenText, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import {faUser, faUserPlus, faPlus, faAmbulance, faCarCrash, faListAlt, faExclamationTriangle, faEnvelopeOpenText,faCalendarAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default class Navbar2 extends Component {
   constructor(props) {
@@ -38,31 +36,30 @@ export default class Navbar2 extends Component {
     const token = this.props.token;
 
     return (
-      <Navbar bg="dark" variant="dark" expand="lg" className="d-flex">
+      <Navbar bg="dark" variant="dark" className="d-flex" fixed="top">
         <Navbar.Brand>
-          <img src={logo} width="30" height="30" className="d-inline-block align-top"/>
-          &nbsp; Road Accident Prevention System
+          <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="RAPS icon"/>
+          &nbsp; <span className="nav_brand_label"> Road Accident Prevention System </span>
+          <span className="nav_brand_label_short"> RAPS </span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="d-flex justify-content-center" fill variant="pills">
           <Dropdown as={NavItem} style={{ display: adminRights ? "block" : "none" }}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faUser} />&nbsp;
-              Police
+              <span className="nav_item_label"> Police </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("addpolice")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("addpolice")} className="dropdown-item">
                   <FontAwesomeIcon icon={faUserPlus} />&nbsp;
                   Add User
-                </a>
+                </button>
               </Dropdown.Item>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("removepolice")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("policelist")} className="dropdown-item">
                   <FontAwesomeIcon icon={faListAlt} />&nbsp;
                   User List
-                </a>
+                </button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -70,20 +67,20 @@ export default class Navbar2 extends Component {
           <Dropdown as={NavItem} style={{ display: adminRights ? "block" : "none" }}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faAmbulance} />&nbsp;
-              Emergency Teams
+              <span className="nav_item_label"> Emergency Teams </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("addeteam")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("addeteam")} className="dropdown-item">
                   <FontAwesomeIcon icon={faUserPlus} />&nbsp;
                   Add Emergency Team
-                </a>
+                </button>
               </Dropdown.Item>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("removeeteam")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("removeeteam")} className="dropdown-item">
                   <FontAwesomeIcon icon={faListAlt} />&nbsp;
                   Emergency Team List
-                </a>
+                </button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -91,20 +88,20 @@ export default class Navbar2 extends Component {
           <Dropdown as={NavItem}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faCarCrash} />&nbsp;
-              Accidents
+              <span className="nav_item_label"> Accidents </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("accidentsubmission")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("accidentsubmission")} className="dropdown-item">
                   <FontAwesomeIcon icon={faPlus} />&nbsp;
                   Accident Submission
-                </a>
+                </button>
               </Dropdown.Item>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("accidentlist")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("accidentlist")} className="dropdown-item">
                   <FontAwesomeIcon icon={faListAlt} />&nbsp;
                   Accident List
-                </a>
+                </button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -112,45 +109,50 @@ export default class Navbar2 extends Component {
           <Dropdown as={NavItem}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
-              Events
+              <span className="nav_item_label"> Events </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("eventsubmission")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("eventsubmission")} className="dropdown-item">
                   <FontAwesomeIcon icon={faPlus} />&nbsp;
                   Event Submission
-                </a>
+                </button>
               </Dropdown.Item>
               <Dropdown.Item>
-                <a onClick={() => this.props.handleNavigation("eventlist")} className="dropdown-item">
+                <button onClick={() => this.props.handleNavigation("eventlist")} className="dropdown-item">
                   <FontAwesomeIcon icon={faListAlt} />&nbsp;
                   Event List
-                </a>
+                </button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
-            <div as={NavItem} className="my-auto">
+            <div as={NavItem} className="">
               <a onClick={() => this.props.handleNavigation("incidentlist")} className="nav-link">
                 <FontAwesomeIcon icon={faEnvelopeOpenText} />&nbsp;
-                Incidents
+                <span className="nav_item_label"> Incidents </span>
               </a>
             </div>
 
+            <div as={NavItem} className="">
+              <a onClick={() => this.props.handleNavigation("holiday")} className="nav-link">
+                <FontAwesomeIcon icon={faCalendarAlt} />&nbsp;
+                <span className="nav_item_label"> Holidays </span>
+              </a>
+            </div>
 
           </Nav>
           <Nav className="ml-auto">
             <div as={NavItem}>
-                <a
+                <button
                   onClick={this.LogOut.bind(this, token)}
                   className="btn btn-outline-danger text-secondary"
                 >
-                <FontAwesomeIcon icon={faSignOutAlt} /> Log out
-                </a>
+                <FontAwesomeIcon icon={faSignOutAlt} />
+                <span className="nav_item_label_log_out"> Log Out </span>
+                </button>
             </div>
           </Nav>
-
-        </Navbar.Collapse>
       </Navbar>
     );
   }
