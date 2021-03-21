@@ -53,6 +53,21 @@ svg circle{
   .add-holiday{position: fixed}
 }
 
+.nav_brand_label_short{display:none}
+
+/*Navbar Responsive*/
+@media screen and (max-width: 1300px) {
+  .nav_item_label_log_out{display: none}
+  .nav_brand_label{display:none}
+  .nav_brand_label_short{display:inline}
+
+}
+@media screen and (max-width: 950px) {
+  .nav_item_label{display: none}
+}
+@media screen and (max-width: 500px) {
+  .nav_brand_label_short{display:none}
+}
 /*
 body{
   background-color: #222;

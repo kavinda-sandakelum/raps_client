@@ -36,18 +36,17 @@ export default class Navbar2 extends Component {
     const token = this.props.token;
 
     return (
-      <Navbar bg="dark" variant="dark" expand="lg" className="d-flex" fixed="top">
+      <Navbar bg="dark" variant="dark" className="d-flex" fixed="top">
         <Navbar.Brand>
           <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="RAPS icon"/>
-          &nbsp; Road Accident Prevention System
+          &nbsp; <span className="nav_brand_label"> Road Accident Prevention System </span>
+          <span className="nav_brand_label_short"> RAPS </span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="d-flex justify-content-center" fill variant="pills">
           <Dropdown as={NavItem} style={{ display: adminRights ? "block" : "none" }}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faUser} />&nbsp;
-              Police
+              <span className="nav_item_label"> Police </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
@@ -68,7 +67,7 @@ export default class Navbar2 extends Component {
           <Dropdown as={NavItem} style={{ display: adminRights ? "block" : "none" }}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faAmbulance} />&nbsp;
-              Emergency Teams
+              <span className="nav_item_label"> Emergency Teams </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
@@ -89,7 +88,7 @@ export default class Navbar2 extends Component {
           <Dropdown as={NavItem}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faCarCrash} />&nbsp;
-              Accidents
+              <span className="nav_item_label"> Accidents </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
@@ -110,7 +109,7 @@ export default class Navbar2 extends Component {
           <Dropdown as={NavItem}>
             <Dropdown.Toggle as={NavLink}>
             <FontAwesomeIcon icon={faExclamationTriangle} />&nbsp;
-              Events
+              <span className="nav_item_label"> Events </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
@@ -131,14 +130,14 @@ export default class Navbar2 extends Component {
             <div as={NavItem} className="">
               <a onClick={() => this.props.handleNavigation("incidentlist")} className="nav-link">
                 <FontAwesomeIcon icon={faEnvelopeOpenText} />&nbsp;
-                Incidents
+                <span className="nav_item_label"> Incidents </span>
               </a>
             </div>
 
             <div as={NavItem} className="">
               <a onClick={() => this.props.handleNavigation("holiday")} className="nav-link">
                 <FontAwesomeIcon icon={faCalendarAlt} />&nbsp;
-                Holidays
+                <span className="nav_item_label"> Holidays </span>
               </a>
             </div>
 
@@ -149,12 +148,11 @@ export default class Navbar2 extends Component {
                   onClick={this.LogOut.bind(this, token)}
                   className="btn btn-outline-danger text-secondary"
                 >
-                <FontAwesomeIcon icon={faSignOutAlt} /> Log out
+                <FontAwesomeIcon icon={faSignOutAlt} />
+                <span className="nav_item_label_log_out"> Log Out </span>
                 </button>
             </div>
           </Nav>
-
-        </Navbar.Collapse>
       </Navbar>
     );
   }
