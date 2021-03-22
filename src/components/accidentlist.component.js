@@ -157,15 +157,7 @@ const Accident = props => {
                 <option selected={props.edit_vehicle_condition} value="bad">Bad</option>
             </select>
         </td>
-        <td>
-            <select className="form-control"
-            style={{width:100}}
-            onChange={props.onChangeStatus}>
-                <option selected={props.edit_status===0} value="0">Reported</option>
-                <option selected={props.edit_status===1} value="1">Dispatched</option>
-                <option selected={props.edit_status===2} value="2">Handled</option>
-            </select>
-        </td>
+
 
         <td className="text-muted">{props.accident.day_cat===0?'Weekday':props.accident.day_cat===1?'Weekend':'PubHoliday'}</td>
         <td className="text-muted">{props.accident.hour_cat===0?'Free':props.accident.hour_cat===1?'Rush':'Normal'}</td>
@@ -199,8 +191,7 @@ const Accident = props => {
                     props.edit_kmPost,
                     props.edit_suburb,
                     props.edit_operatedSpeed,
-                    props.edit_vehicle_condition,
-                    props.edit_status
+                    props.edit_vehicle_condition
                   )}}>
                   <FontAwesomeIcon icon={faSave} />
                 </button>
@@ -238,7 +229,6 @@ const Accident = props => {
 
         <td>{props.accident.operatedSpeed}</td>
         <td>{props.accident.vehicle_condition?'Bad':'Good'}</td>
-        <td>{props.accident.status===0?'Reported':props.accident.status===1?'Dispatched':'Handled'}</td>
 
         <td className="text-muted">{props.accident.day_cat===0?'Weekday':props.accident.day_cat===1?'Weekend':'PubHoliday'}</td>
         <td className="text-muted">{props.accident.hour_cat===0?'Free':props.accident.hour_cat===1?'Rush':'Normal'}</td>
@@ -291,7 +281,6 @@ export default class AccidentList extends Component {
         this.onChangeKmPost = this.onChangeKmPost.bind(this);
         this.onChangeSuburb = this.onChangeSuburb.bind(this);
         this.onChangeOperatedSpeed = this.onChangeOperatedSpeed.bind(this);
-        this.onChangeStatus = this.onChangeStatus.bind(this);
 
     this.state = {accidentlist: [], loading: true};
   }
@@ -346,8 +335,7 @@ export default class AccidentList extends Component {
             kmPost,
             suburb,
             operatedSpeed,
-            vehicle_condition,
-            status
+            vehicle_condition
   ) {
     console.log("Update date format");
     const accDate = new Date(accidentDate);
@@ -371,7 +359,6 @@ export default class AccidentList extends Component {
                     reason: reason,
                     kmPost: kmPost,
                     suburb: suburb,
-                    status: status,
                     operatedSpeed: operatedSpeed,
                     vehicle_condition: vehicle_condition,
                     sessionToken:this.props.token
@@ -396,7 +383,6 @@ export default class AccidentList extends Component {
        edit_reason: null,
        edit_kmPost: null,
        edit_suburb: null,
-       edit_status: null,
        edit_operatedSpeed: null,
        edit_vehicle_condition: null
     })
@@ -421,7 +407,6 @@ export default class AccidentList extends Component {
        edit_reason: accident.reason,
        edit_kmPost: accident.kmPost,
        edit_suburb: accident.suburb,
-       edit_status: accident.status,
        edit_operatedSpeed: accident.operatedSpeed,
        edit_vehicle_condition: accident.vehicle_condition
     })
@@ -446,7 +431,6 @@ export default class AccidentList extends Component {
       edit_reason: null,
       edit_kmPost: null,
       edit_suburb: null,
-      edit_status: null,
       edit_operatedSpeed: null,
       edit_vehicle_condition: null,
       updateFlag: true
@@ -586,11 +570,7 @@ export default class AccidentList extends Component {
       res:''
     })
   }
-  onChangeStatus(e) {
-    this.setState({
-      edit_status: parseInt(e.target.value)
-    })
-  }
+
 
 
 
@@ -622,7 +602,6 @@ export default class AccidentList extends Component {
         onChangeKmPost=   {this.onChangeKmPost}
         onChangeSuburb=   {this.onChangeSuburb}
         onChangeOperatedSpeed=   {this.onChangeOperatedSpeed}
-        onChangeStatus=   {this.onChangeStatus}
 
 
 
@@ -642,7 +621,6 @@ export default class AccidentList extends Component {
        edit_reason= {this.state.edit_reason}
        edit_kmPost= {this.state.edit_kmPost}
        edit_suburb= {this.state.edit_suburb}
-       edit_status= {this.state.edit_status}
        edit_operatedSpeed= {this.state.edit_operatedSpeed}
        edit_vehicle_condition= {this.state.edit_vehicle_condition}
        />;
@@ -676,7 +654,6 @@ export default class AccidentList extends Component {
 
               <th>Operated Speed</th>
               <th>Vehicle Condition</th>
-              <th>Status</th>
 
               <th>Day_cat</th>
               <th>Hour_cat</th>
