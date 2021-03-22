@@ -21,6 +21,7 @@ const Accident = props => {
               onChange={props.onChangeAccidentDate}/>
         </td>
         <td>
+        {props.edit_accidentTime}
               <input  type="time"
                   className="form-control"
                   value={props.edit_accidentTime}
@@ -346,13 +347,15 @@ export default class AccidentList extends Component {
             suburb,
             operatedSpeed,
             vehicle_condition,
-            status,
-            sessionToken
+            status
   ) {
-    console.log("date format");
-    const datetime = new Date(accidentDate.toString().replace(/(\d\d:\d\d)/,accidentTime).slice(0,-1))
-        console.log(accidentDate.toString())
+    console.log("Update date format");
+    const accDate = new Date(accidentDate);
+    const datetime = new Date(accDate.toISOString().replace(/(\d\d:\d\d)/,accidentTime).slice(0,-1))
+        console.log(accDate.toISOString())
         console.log(accidentTime)
+        console.log("update datetime:")
+        console.log(datetime)
     await axios.post('http://localhost:5000/accident/update/', {
                     id: id,
                     datetime: datetime,
