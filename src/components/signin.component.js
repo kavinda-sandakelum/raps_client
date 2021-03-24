@@ -93,12 +93,12 @@ export default class Signin extends Component {
           <div className="background">
             <motion.div
               className="form-button"
-              initial={{ x: -100, opacity: 0 }}
+              initial={{ scale: 0.5, opacity: 0 }}
               animate={{
-                x: 0,
+                scale: 1,
                 opacity: 1,
               }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
             >
               <Container>
                 <Row>
@@ -108,7 +108,7 @@ export default class Signin extends Component {
                         initial={{ y: -100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{
-                          delay: 1,
+                          delay: 0.5,
                           type: "spring",
                           stiffness: 120,
                         }}
@@ -121,7 +121,7 @@ export default class Signin extends Component {
                       initial={{ y: 100, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{
-                        delay: 1,
+                        delay: 0.5,
                         type: "spring",
                         stiffness: 120,
                       }}
@@ -133,7 +133,7 @@ export default class Signin extends Component {
                       className="formside"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 1, duration: 1 }}
+                      transition={{ delay: 0.5, duration: 1 }}
                     >
                       <div className="welcome">
                         <h4>Welcome Back!</h4>
